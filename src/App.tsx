@@ -1,7 +1,7 @@
-import { ContactTheClub } from '@/components/ContactTheClub'
+import { DemoOne } from '@/components/ui/demo'
 
 function App() {
-  return <ContactTheClub />
+  return <DemoOne />
 }
 
 export default App

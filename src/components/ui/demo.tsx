@@ -1,3 +1,4 @@
+import React from 'react';
 import Component from '@/components/ui/stacking-card';
 
 const projects = [

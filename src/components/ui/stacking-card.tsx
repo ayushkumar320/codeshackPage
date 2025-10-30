@@ -1,7 +1,8 @@
 'use client';
 import { ReactLenis } from 'lenis/react';
 import { useTransform, motion, useScroll, MotionValue } from 'motion/react';
-import { useRef } from 'react';
+import { useRef, forwardRef } from 'react';
+import { cn } from '@/lib/utils';
 
 interface ProjectData {
   title: string;
@@ -51,11 +52,11 @@ export const Card = ({
           scale,
           top: `calc(-5vh + ${i * 25}px)`,
         }}
-        className='flex flex-col relative -top-[25%] h-[450px] w-[70%] rounded-md p-10 origin-top'
+        className={`flex flex-col relative -top-[25%] h-[450px] w-[70%] rounded-md p-10 origin-top`}
       >
         <h2 className='text-2xl text-center font-semibold'>{title}</h2>
-        <div className='flex h-full mt-5 gap-10'>
-          <div className='w-[40%] relative top-[10%]'>
+        <div className={`flex h-full mt-5 gap-10`}>
+          <div className={`w-[40%] relative top-[10%]`}>
             <p className='text-sm'>{description}</p>
             <span className='flex items-center gap-2 pt-2'>
               <a
@@ -80,8 +81,13 @@ export const Card = ({
             </span>
           </div>
 
-          <div className='relative w-[60%] h-full rounded-lg overflow-hidden '>
-            <motion.div className='w-full h-full' style={{ scale: imageScale }}>
+          <div
+            className={`relative w-[60%] h-full rounded-lg overflow-hidden `}
+          >
+            <motion.div
+              className={`w-full h-full`}
+              style={{ scale: imageScale }}
+            >
               <img src={url} alt='image' className='absolute inset-0 w-full h-full object-cover' />
             </motion.div>
           </div>
@@ -95,7 +101,7 @@ interface ComponentRootProps {
   projects: ProjectData[];
 }
 
-const Component = ({ projects }: ComponentRootProps) => {
+const Component = forwardRef<HTMLElement, ComponentRootProps>(({ projects }, ref) => {
   const container = useRef(null);
   const { scrollYProgress } = useScroll({
     target: container,
@@ -105,15 +111,6 @@ const Component = ({ projects }: ComponentRootProps) => {
   return (
     <ReactLenis root>
       <main className='bg-black' ref={container}>
-        <>
-          <section className='text-white h-[70vh] w-full bg-slate-950 grid place-content-center'>
-            <div className='absolute bottom-0 left-0 right-0 top-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#4f4f4f2e_1px,transparent_1px)] bg-[size:54px_54px] [mask-image:radial-gradient(ellipse_60%_50%_at_50%_0%,#000_70%,transparent_100%)]'></div>
-
-            <h1 className='2xl:text-7xl text-5xl px-8 font-semibold text-center tracking-tight leading-[120%]'>
-              Stacking Cards Using <br /> Motion. Scroll down! 👇
-            </h1>
-          </section>
-        </>
 
         <section className='text-white w-full bg-slate-950'>
           {projects.map((project, i) => {
@@ -143,7 +140,9 @@ const Component = ({ projects }: ComponentRootProps) => {
       </main>
     </ReactLenis>
   );
-};
+});
+
+Component.displayName = 'Component';
 
 export default Component;
 

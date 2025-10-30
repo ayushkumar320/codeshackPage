@@ -1,4 +1,5 @@
 import { Instagram, Youtube, MessageCircle } from 'lucide-react'
+import { DemoOne } from '@/components/ui/demo'
 
 export function ContactTheClub() {
   return (
@@ -48,6 +49,11 @@ export function ContactTheClub() {
             </div>
           </a>
         </div>
+      </section>
+
+      {/* Stacking card demo below the social links */}
+      <section className='mt-10'>
+        <DemoOne />
       </section>
     </main>
   )
