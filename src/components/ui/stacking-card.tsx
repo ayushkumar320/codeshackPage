@@ -3,6 +3,7 @@ import { ReactLenis } from 'lenis/react';
 import { useTransform, motion, useScroll, MotionValue } from 'motion/react';
 import { useRef, forwardRef } from 'react';
 import { cn } from '@/lib/utils';
+import { AuthorCardsDemo } from './author-cards-demo';
 
 interface ProjectData {
   title: string;
@@ -130,6 +131,9 @@ const Component = forwardRef<HTMLElement, ComponentRootProps>(({ projects }, ref
             );
           })}
         </section>
+
+        {/* Author Cards Section */}
+        <AuthorCardsDemo />
 
         <footer className='group bg-slate-950'>
           <h1 className='text-[16vw] translate-y-20 leading-[100%] uppercase font-semibold text-center bg-gradient-to-r from-gray-400 to-gray-800 bg-clip-text text-transparent transition-all ease-linear'>
