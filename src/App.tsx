@@ -6,10 +6,10 @@ import {SocialLogosDemo} from "@/components/ui/DemoFive"
 
 function App() {
   //return <Demo />
-  //return <DemoTwo />
-  //return <DemoThree/>
+  // return <DemoTwo />
+  return <DemoThree/>
   //return <SpinningLogosDemo/>
-  return <SocialLogosDemo/>
+  // return <SocialLogosDemo/>
 
   //comment out the return statement to see whichever design is suitable
 }
